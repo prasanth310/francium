@@ -1,0 +1,10 @@
+<div class="card">
+    <%= image_tag(matrimony.thumb_image_url, size: '300x200' ) unless matrimony.thumb_image_url.nil? %>       
+    <p class="card-text">
+        <p>Name : <%= link_to matrimony.name, matrimony_path(matrimony.id) %></p>
+        <span>Age : <%= matrimony.age %></span>
+        <tr>spa : <%= matrimony.spa %></tr>
+    </p>
+    <%= link_to "Edit", edit_matrimony_path(matrimony) if logged_in?(:site_admin) %>
+    <%= link_to 'Delete post', matrimony_path(matrimony.id), method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin) %>
+</div>

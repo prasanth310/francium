@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Francium</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+  </head>
+  <body>
+    <nav class="nav nav-masthead">
+      <h3>Matrimony</h3>
+      
+      <% if current_user.is_a?(GuestUser) %>
+        <%= link_to "Register", new_user_registration_path, class: 'nav-link' %>
+        <%= link_to "Login", new_user_session_path, class: 'nav-link' %> 
+      <% else %>
+        <%= link_to "Home",root_path, class: 'nav-link' %>
+        <%= link_to "Logout", destroy_user_session_path,method: :delete, class: 'nav-link' %>  
+      <% end %>
+      <%= link_to "Create New Item", new_matrimony_url, class: 'nav-link' unless current_user.is_a?(GuestUser) %>
+    </nav>
+    <%= yield %>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+      </div>
+    </footer>
+    <div class="mast-foot">
+        <%= @copyright %> 
+    </div>      
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<div class="album text-muted">
+    <div class="container">
+        <div class="row">
+            <h1>Hi, <%= current_user.first_name %> Search Your Partner</h1>   
+            <%= render partial: 'matrimony', collection: @matrimonies %>
+        </div>
+    </div>
+</div>
