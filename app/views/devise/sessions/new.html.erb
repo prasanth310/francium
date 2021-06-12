@@ -1,11 +1,9 @@
 <div class="album text-muted">
   <div class="container">
-    
     <h2>Log in</h2>
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="row">
-
+    <div class="row">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= flash[:alert]%>
         <div class="col-md-4">
           <div class="form-group">
             <%= f.label :email %><br />
@@ -21,16 +19,16 @@
             <div class="form-group">
               <%= f.check_box :remember_me %>
               <%= f.label :remember %>
-            </div>
+            </div>    
           <% end %>
 
           <div class="auth-link">
             <%= f.submit "Log in", class: 'btn btn-primary' %>
           </div>
         <% end %>
-        <div class="auth-link">
-          <%= render "devise/shared/links" %>
-        </div>
+      
+        <%= render "devise/shared/links" %>
+        
       </div>
     </div>  
   </div>

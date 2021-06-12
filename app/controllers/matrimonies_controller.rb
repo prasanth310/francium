@@ -1,9 +1,12 @@
 class MatrimoniesController < ApplicationController
     
-    #before_action :authenticatr_user!, except: %i[ show edit update destroy ]
-    access all: [:show, :index], user: {except: [:destroy, :update, :edit]}, site_admin: :all
+    before_action :authenticate_user!, except: %i[ show edit update destroy ]
+    #access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
+    
     def index
         @matrimonies = Matrimony.all
+        
+         @users = User.includes(:matrimony)
     end
     
     def new
@@ -12,7 +15,7 @@ class MatrimoniesController < ApplicationController
     
     def create
         @matrimonies = Matrimony.new(params.require(:matrimony).permit(:name, :age , :spa, :main_image, :thumb_image))
-        
+        @matrimonies.user = current_user
         respond_to do |format|
         if @matrimonies.save
             format.html { redirect_to matrimonies_path, notice: "matrimonies was successfully created." }
@@ -42,9 +45,8 @@ class MatrimoniesController < ApplicationController
     end
     
     def show
-        @matrimonies = Matrimony.includes(:comments).find(params[:id])
-        @comment = Comment.new
-       
+        @matrimonies = Matrimony.includes(:user).find(params[:id])  
+        @comments = Comment.new
     end
     
     def destroy

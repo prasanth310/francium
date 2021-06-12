@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  devise_for :users, path: '', path_names: { sign_in: 'Login', sign_out: 'Logout', sign_up: 'register'}
+  devise_for :users, path: '', path_names: { sign_in: 'Login', sign_out: 'Logout', sign_up: 'register'}, controllers: {registrations: "registrations"}
+  
   resources :matrimonies do
     resources :comments
   end

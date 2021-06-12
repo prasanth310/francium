@@ -1,9 +1,18 @@
 <div class="album text-muted">
   <div class="container">
     <div class="row">
-      <div class="col-md-5">
-        <h1>NEW matrimony</h1>
-        <%= form_for(@matrimonies) do |form| %>
+      <div class="col-md-5">        
+        <h1>Create new profile</h1>
+                  
+        <%= form_for @matrimonies do |form| %> 
+          <% if @matrimonies.errors.any? %>
+            <h2>Error:</h2>
+            <ul>
+              <% @matrimonies.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>         
           <div class="form-group">
             <%= form.label :name %>
             <%= form.text_field :name, class: 'form-control' %>
@@ -19,16 +28,18 @@
             <%= form.text_area :spa, class: 'form-control' %>
           </div>
 
-          <div class="field">
-            <%= form.file_field :main_image %>
+          <div class="button">
+            <%= form.label :main_image %>
+            <%= form.file_field :main_image, class: 'form-control' %>
           </div>
           
-          <div class="field">
-            <%= form.file_field :thumb_image %>
+          <div class="button">
+            <%= form.label :thumb_image %>
+            <%= form.file_field :thumb_image, class: 'form-control' %>
           </div>
 
-          <div class="actions">
-            <%= form.submit %>
+          <div class="auth-link">
+            <%= form.submit 'update', class: 'btn btn-primary' %>
           </div>
         <% end %>
       </div>

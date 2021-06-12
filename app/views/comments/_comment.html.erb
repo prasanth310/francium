@@ -1,2 +1,4 @@
-<p><%= current_user.first_name %> ==>> <%= comment.body %></p>
-<p><%= link_to 'Delete',[comment.matrimony,comment], method: :delete, data: {confirm: 'Are you sure' } if logged_in?(:site_admin) %>  </p>
+<P><b><%= comment.user.name %></b> : <%= comment.body %> <%= link_to "Delete", [comment.matrimony, comment],method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == @matrimonies.user_id  %>
+
+
+

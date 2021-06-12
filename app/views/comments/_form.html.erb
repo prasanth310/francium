@@ -1,9 +1,10 @@
+
 <%= form_for([@matrimonies,@matrimonies.comments.build]) do |form| %>
-    
     <div class="form-group">
         <%= form.label :Comment %>
         <%= form.text_area :body, class: 'form-control' %>
     </div>
-    <%= form.submit 'Post', class: 'btn btn-primary' %>
-    
+    <div class="auth-link">
+        <%= form.submit 'Post', class: 'btn btn-primary' %>
+    </div>
 <% end %>

@@ -21,17 +21,17 @@
           
           <div class="field">
             <%= image_tag @matrimonies.main_image_url, size: '300x200' %>
-            <%= form.file_field :main_image %>
+            <%= form.file_field :main_image, class: 'btn btn-secondry' %>
           </div>
           
           <div class="field">
             <%= image_tag @matrimonies.thumb_image_url, size: '300x200' %>
-            <%= form.file_field :thumb_image %>
+            <%= form.file_field :thumb_image, class: 'btn btn-secondry' %>
           </div>
 
 
-          <div class="field">
-            <%= form.submit %>
+          <div class="auth-link">
+            <%= form.submit 'update', class: 'btn btn-primary' %>
           </div>
         <% end %>
       </div>

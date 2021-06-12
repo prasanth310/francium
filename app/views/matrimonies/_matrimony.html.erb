@@ -5,6 +5,6 @@
         <span>Age : <%= matrimony.age %></span>
         <tr>spa : <%= matrimony.spa %></tr>
     </p>
-    <%= link_to "Edit", edit_matrimony_path(matrimony) if logged_in?(:site_admin) %>
-    <%= link_to 'Delete post', matrimony_path(matrimony.id), method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin) %>
+    <%= link_to "Edit", edit_matrimony_path(matrimony) if current_user.id == matrimony.user_id %>
+    <%= link_to 'Delete post', matrimony_path(matrimony.id), method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == matrimony.user_id %>
 </div>
